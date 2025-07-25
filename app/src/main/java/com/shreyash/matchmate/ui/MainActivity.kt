@@ -1,6 +1,7 @@
 package com.shreyash.matchmate.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -43,11 +44,18 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
 
         viewModel.profiles.observe(this) { profiles ->
-            adapter.submitList(profiles)
+            if (profiles.isEmpty())
+                binding.emptyState.visibility = View.VISIBLE
+            else {
+                binding.emptyState.visibility = View.GONE
+                adapter.submitList(profiles)
+            }
         }
 
         viewModel.error.observe(this) { error ->
-            error?.let { Toast.makeText(this, it, Toast.LENGTH_LONG).show() }
+            error?.let {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
         }
 
         binding.swipeRefresh.setOnRefreshListener {

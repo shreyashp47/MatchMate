@@ -1,6 +1,7 @@
 package com.shreyash.matchmate.repository
 
 import android.content.Context
+import android.net.ConnectivityManager
 import android.util.Log
 import com.shreyash.matchmate.db.AppDatabase
 import com.shreyash.matchmate.db.UserProfileDao
@@ -18,38 +19,45 @@ class UserRepository(
 ) {
     private val TAG = "UserRepository"
     suspend fun fetchAndStoreProfiles(): Result<Unit> = withContext(Dispatchers.IO) {
-        // Simulate 30% network failure
-        if (Random.nextFloat() < 0.3f) {
-            return@withContext Result.failure(Exception("Simulated network failure"))
-        }
-        val response = apiService.getUsers()
-        if (response.isSuccessful) {
-            Log.i(TAG, "fetchAndStoreProfiles: Success")
-            val apiUsers = response.body()?.results ?: emptyList()
-            val profiles = apiUsers.map { apiUser ->
-                val education = listOf("B.Tech", "MBA", "M.Sc", "B.A", "PhD").random()
-                val religion = listOf("Hindu", "Muslim", "Christian", "Sikh", "Jain").random()
-                val name = "${apiUser.name.first} ${apiUser.name.last}"
-                val matchScore =
-                    calculateMatchScore(apiUser.dob.age, apiUser.location.city, apiUser.gender)
-                UserProfile(
-                    id = apiUser.login.uuid,
-                    name = name,
-                    age = apiUser.dob.age,
-                    location = apiUser.location.city + ", " + apiUser.location.country,
-                    imageUrl = apiUser.picture.large,
-                    education = education,
-                    religion = religion,
-                    matchScore = matchScore,
-                    status = MatchStatus.NONE
-                )
+        try {
+            // Simulate 30% network failure
+            if (Random.nextFloat() < 0.3f) {
+                return@withContext Result.failure(Exception("Simulated network failure"))
             }
-            userProfileDao.insertProfiles(profiles)
-            Result.success(Unit)
-        } else {
-            Result.failure(Exception("API error"))
+
+            val response = apiService.getUsers()
+            if (response.isSuccessful) {
+                Log.i(TAG, "fetchAndStoreProfiles: Success")
+                val apiUsers = response.body()?.results ?: emptyList()
+                val profiles = apiUsers.map { apiUser ->
+                    val education = listOf("B.Tech", "MBA", "M.Sc", "B.A", "PhD").random()
+                    val religion = listOf("Hindu", "Muslim", "Christian", "Sikh", "Jain").random()
+                    val name = "${apiUser.name.first} ${apiUser.name.last}"
+                    val matchScore =
+                        calculateMatchScore(apiUser.dob.age, apiUser.location.city, apiUser.gender)
+                    UserProfile(
+                        id = apiUser.login.uuid,
+                        name = name,
+                        age = apiUser.dob.age,
+                        location = apiUser.location.city + ", " + apiUser.location.country,
+                        imageUrl = apiUser.picture.large,
+                        education = education,
+                        religion = religion,
+                        matchScore = matchScore,
+                        status = MatchStatus.NONE
+                    )
+                }
+                userProfileDao.insertProfiles(profiles)
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("API error: ${response.code()}"))
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "fetchAndStoreProfiles: Exception", e)
+            Result.failure(e)
         }
     }
+
 
     fun getProfiles() = userProfileDao.getAllProfiles()
 
@@ -82,4 +90,5 @@ class UserRepository(
             }
         }
     }
+
 }
