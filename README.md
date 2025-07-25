@@ -132,14 +132,7 @@ If given more time, the following features would be implemented:
       <img src="https://github.com/shreyashp47/MatchMate/blob/main/ss/ss2.png" alt="Add Task" width="200"/>
       <br><b>Add/Edit Task</b>
     </td>
-    <td align="center">
-      <img src="https://github.com/shreyashp47/DoTrack/blob/main/SS/Screenshot_20250608_095253.png" alt="Settings" width="200"/>
-      <br><b>Settings</b>
-    </td>
-    <td align="center">
-      <img src="https://github.com/shreyashp47/DoTrack/blob/main/SS/Screenshot_20250608_093813.png" alt="Wallpaper" width="200"/>
-      <br><b>Dynamic Wallpaper</b>
-    </td>
+    
   </tr>
 </table>
 </div>
