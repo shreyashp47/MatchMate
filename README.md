@@ -92,17 +92,54 @@ If given more time, the following features would be implemented:
 ---
 
 ## Project Structure
-      MatchMate
+ 
       ├── app
-      │ ├── build.gradle.kts
-      │ └── src
-      │ ├── main
-      │ │ ├── java/com/shreyash/matchmate
-      │ │ │ ├── db
-      │ │ │ ├── model
-      │ │ │ ├── network
-      │ │ │ ├── repository
-      │ │ │ ├── ui
-      │ │ │ └── viewmodel
+      │   └── src
+      │       ├── main
+      │       │   ├── AndroidManifest.xml
+      │       │   ├── java
+      │       │   │   └── com
+      │       │   │       └── shreyash
+      │       │   │           └── matchmate
+      │       │   │               ├── db
+      │       │   │               │   ├── AppDatabase.kt
+      │       │   │               │   └── UserProfileDao.kt
+      │       │   │               ├── model
+      │       │   │               │   └── UserProfile.kt
+      │       │   │               ├── network
+      │       │   │               │   ├── ApiResponse.kt
+      │       │   │               │   └── ApiService.kt
+      │       │   │               ├── repository
+      │       │   │               │   └── UserRepository.kt
+      │       │   │               ├── ui
+      │       │   │               │   ├── MainActivity.kt
+      │       │   │               │   └── MatchAdapter.kt
+      │       │   │               └── viewmodel
+      │       │   │                   └── UserViewModel.kt
+
+
 
 ## Screenshots
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/shreyashp47/MatchMate/blob/main/ss/ss1.png" alt="Tasks Screen" width="200"/>
+      <br><b>Tasks Overview</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/shreyashp47/MatchMate/blob/main/ss/ss2.png" alt="Add Task" width="200"/>
+      <br><b>Add/Edit Task</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/shreyashp47/DoTrack/blob/main/SS/Screenshot_20250608_095253.png" alt="Settings" width="200"/>
+      <br><b>Settings</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/shreyashp47/DoTrack/blob/main/SS/Screenshot_20250608_093813.png" alt="Wallpaper" width="200"/>
+      <br><b>Dynamic Wallpaper</b>
+    </td>
+  </tr>
+</table>
+</div>
