@@ -52,11 +52,11 @@ Match score is calculated out of 100 based on the following:
 
 - Age Score (max 50): Based on proximity to the preferred age (28). Subtract 2 points per year difference.
 - City Score (max 50):
-    - India: 50
-    - Germany: 40
-    - Canada, Australia: 30
-    - Brazil: 0
-    - Others: 10
+  - India: 50
+  - Germany: 40
+  - Canada, Australia: 30
+  - Brazil: 0
+  - Others: 10
 
 If the profile's gender is "male", score is 0.
 
@@ -83,4 +83,26 @@ If profile images cannot be shown due to legal reasons:
 
 ## Reflection
 
-If given more time, a feature to allow users to filter matches by age range, city, religion, or education would be added to improve usability.
+If given more time, the following features would be implemented:
+
+- User Profile section to allow users to create their own profile.
+- Preferences screen to define matching criteria like age, religion, education.
+- Filter functionality to sort or limit visible matches based on preferences.
+
+---
+
+## Project Structure
+      MatchMate
+      ├── app
+      │ ├── build.gradle.kts
+      │ └── src
+      │ ├── main
+      │ │ ├── java/com/shreyash/matchmate
+      │ │ │ ├── db
+      │ │ │ ├── model
+      │ │ │ ├── network
+      │ │ │ ├── repository
+      │ │ │ ├── ui
+      │ │ │ └── viewmodel
+
+## Screenshots
