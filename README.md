@@ -126,11 +126,11 @@ If given more time, the following features would be implemented:
   <tr>
     <td align="center">
       <img src="https://github.com/shreyashp47/MatchMate/blob/main/ss/ss1.png" alt="Tasks Screen" width="200"/>
-      <br><b>Tasks Overview</b>
+      <br><b> </b>
     </td>
     <td align="center">
       <img src="https://github.com/shreyashp47/MatchMate/blob/main/ss/ss2.png" alt="Add Task" width="200"/>
-      <br><b>Add/Edit Task</b>
+      <br><b> </b>
     </td>
     
   </tr>
