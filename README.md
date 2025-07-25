@@ -70,14 +70,6 @@ If the profile's gender is "male", score is 0.
 - Errors are handled gracefully with retries and partial data loading.
 - If offline, the app continues to function using the local database.
 
----
-
-## Design Constraint Response
-
-If profile images cannot be shown due to legal reasons:
-
-- The app displays a placeholder with initials of the user’s name.
-- Layout was updated to ensure proper alignment without images.
 
 ---
 
